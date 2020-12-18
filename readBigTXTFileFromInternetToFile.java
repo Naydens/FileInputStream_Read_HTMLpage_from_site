@@ -1,26 +1,30 @@
 package FIS;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 
-public class ReadFromFileWriteToFile {
+public class readBigTXTFileFromInternetToFile {
     public static void main(String[] args) {
-        File fileInput = new File("C:\\Users\\1\\Desktop\\mySQL_practice\\SELECT rufat babayev.txt");
+
         File fileOutput = new File("C:\\Users\\1\\Desktop\\fileOutputStream.txt");
 
-        InputStream inputStream = null;
+        InputStreamReader inputStream = null;
         OutputStream outputStream = null;
 
         try {
-            inputStream = new FileInputStream(fileInput);
+            URL url = new URL("https://norvig.com/big.txt");
+            inputStream = new InputStreamReader(url.openStream());
             outputStream = new FileOutputStream(fileOutput);
             writerToFile(inputStream, outputStream);
             inputStream.close();
             outputStream.close();
 
-        } catch (IOException e) {
-            e.getMessage();
-        } finally {
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+        finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
@@ -36,11 +40,8 @@ public class ReadFromFileWriteToFile {
                 }
             }
         }
-
-
     }
-
-    private static byte[] readerBytes(InputStream stream) throws IOException {
+    private static byte[] readerBytes(InputStreamReader stream) throws IOException {
         ArrayList<Integer> listB = new ArrayList<>();
         int i;
         while ((i = stream.read()) != -1) {
@@ -52,12 +53,9 @@ public class ReadFromFileWriteToFile {
         }
         return arr;
     }
-
-    private static void writerToFile(InputStream inputStream, OutputStream outputStream) throws IOException {
+    private static void writerToFile(InputStreamReader inputStream, OutputStream outputStream) throws IOException {
         byte[] arrByte = readerBytes(inputStream);
         outputStream.write(arrByte);
     }
-
-
 }
 
