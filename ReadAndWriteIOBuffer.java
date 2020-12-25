@@ -6,7 +6,7 @@ import java.io.*;
 public class ReadAndWriteIOBuffer {
     public static void main(String[] args) {
         File fileInput = new File("C:\\Users\\1\\Desktop\\fileOutputStream.txt");
-        File fileOutput = new File("C:\\Users\\1\\Desktop\\fileOutputStreamN.txt");
+        File fileOutput = new File(" fileOutputStreamN.txt");
 
         try (FileInputStream inputStream = new FileInputStream(fileInput);
              FileOutputStream outputStream = new FileOutputStream(fileOutput)) {

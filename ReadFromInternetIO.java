@@ -1,4 +1,4 @@
-package IO;
+package FIS;
 
 
 import java.io.*;
@@ -24,7 +24,7 @@ public class ReadFromInternetIO {
 
         } catch (IOException e) {
 
-        }
+        } 
 
         try {
             fileOutputStream = new FileOutputStream("C:\\Users\\1\\Desktop\\rM.txt");
